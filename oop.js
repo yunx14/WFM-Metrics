@@ -125,14 +125,14 @@ function Barchart(svgnum, store, metric, year) {
             .attr("height", function (d) { return height - y(d.Value); });
 
         svg.append("text")
-            .attr("x", (width / 2) - 25)
+            .attr("x", (width / 2) - 5)
             .attr("y", -35)
             .attr("text-anchor", "middle")
             .attr("class", "graph-title")
             .text(year+' '+store);
 
         svg.append("text")
-            .attr("x", (width / 2) - 25)
+            .attr("x", (width / 2) - 5)
             .attr("y", -20)
             .attr("text-anchor", "middle")
             .attr("class", "graph-title")
