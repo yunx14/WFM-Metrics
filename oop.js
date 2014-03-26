@@ -16,6 +16,7 @@ function Barchart(svgnum, store, metric, year) {
 		var q2 = [];
 		var q3 = [];
 		var q4 = [];
+        var sum = 0, avg;
 		var regdata = [];
 		
 		var prepregiondata = $.grep(items, function(v) {
@@ -24,24 +25,45 @@ function Barchart(svgnum, store, metric, year) {
 
 		for (var i = 0; i < prepregiondata.length; i++) {
 			switch(prepregiondata[i].Quarter) {
-				case 'Q1': q1.push(prepregiondata[i]); break;
-				case 'Q2': q2.push(prepregiondata[i]); break;
-				case 'Q3': q3.push(prepregiondata[i]); break;
-				case 'Q4': q4.push(prepregiondata[i]); break; 
+				case 'Q1': q1.push(prepregiondata[i].Value); break;
+				case 'Q2': q2.push(prepregiondata[i].Value); break;
+				case 'Q3': q3.push(prepregiondata[i].Value); break;
+				case 'Q4': q4.push(prepregiondata[i].Value); break; 
 			}
 		}
 
-		for (var k = 1; k < 5; k++) {
-			if(eval('q'+(k)).length > 0) {
-				var sum = 0;
-				for (var j = 0; j < eval('q'+(k)).length; j++) {
-					sum += parseInt(eval('q'+(k))[j].Value);
-				}
-				var regavg = Math.round(sum / (eval('q'+(k)).length));
-				var avg = {'Quarter': k, "Value": regavg };
-				regdata.push(avg);
-			}
-		}
+        if(q1.length > 0) {
+            for (var j = 0; j < q1.length; j++) {
+                sum += q1[j];
+            }
+            avg = Math.round(sum / q1.length);
+            regdata.push({"Quarter": 1, "Value": avg });
+        }
+
+        if(q2.length > 0) {
+            for (var k = 0; k < q2.length; k++) {
+                sum += q2[k];
+            }
+            avg = Math.round(sum / q2.length);
+            regdata.push({"Quarter": 2, "Value": avg });
+        }
+
+        if(q3.length > 0) {
+            for (var l = 0; l < q3.length; l++) {
+                sum += q3[l];
+            }
+            avg = Math.round(sum / q3.length);
+            regdata.push({"Quarter": 3, "Value": avg });
+        }
+
+        if(q4.length > 0) {
+            for (var m = 0; m < q4.length; m++) {
+                sum += q4[m];
+            }
+            avg = Math.round(sum / q4.length);
+            regdata.push({"Quarter": 4, "Value": avg });
+        }
+        
 		return regdata;
 	};
 
@@ -367,15 +389,16 @@ function init() {
 
         // Make sure each <select> has been selected
         if (filterStore != 'Select Store' && filterMetric != 'Select Metric' && filterYear != 'Select Year') {
+            var svg;
             if(filterMetric == 'Current Campaign') { //create new Barchart for every metric in mainPage
                 filterMetric = mainPage;
                 for (var i = 0; i < filterMetric.length; i++) {
-                    var svg = new Barchart(svgnum, filterStore, filterMetric[i], filterYear);
+                    svg = new Barchart(svgnum, filterStore, filterMetric[i], filterYear);
                     svg.drawGraph();
                     svgnum++;
                 }
             } else { //create single new Barchart
-                var svg = new Barchart(svgnum, filterStore, filterMetric, filterYear);
+                svg = new Barchart(svgnum, filterStore, filterMetric, filterYear);
                 svg.drawGraph();
                 svgnum++;
             }
