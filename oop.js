@@ -288,23 +288,18 @@ function propMetrics(enabledMetrics) {
 
     //filter data by Store
     var store = $('#selectStore option:selected').text();
-    metricList = $.grep(items, function (v) {
+    metricList = $.grep(items, function (v) { //get list of metrics sorted by selected store
         return (v.Store == store);
     });
 
-	//add unique metrics to availableMetrics array 
+    // add metrics ot availableMetrics array
     for (var i = 0; i < metricList.length; i++) {
-        var object = metricList[i];
-        var exists = false;
-        jQuery.each(availableMetrics, function (index, avMetric) {
-            if (object.Description == avMetric) {
-                exists = true;
-            }
-        });
-        if (exists === false) {
-            availableMetrics.push(object.Description);
-        }
+        availableMetrics.push(metricList[i].Description);
     }
+    // filter out duplicate metrics
+    availableMetrics = $.grep(availableMetrics, function(v,k) {
+        return $.inArray(v, availableMetrics) == k;
+    });
 
     // Cross check availableMetrics with enabledMetrics store metrics in metricsList
     for (var j = 0; j < availableMetrics.length; j++) {
@@ -341,19 +336,14 @@ function propYears() {
         return (v.Store == store && v.Description == metric);
     });
 
-    //add unique years to availableYears array and append options to select
+    // add years to availableYears array
     for (var i = 0; i < yearList.length; i++) {
-        var object = yearList[i];
-        var exists = false;
-        jQuery.each(availableYears, function (index, avmetric) {
-            if (object.Year == avmetric) {
-                exists = true;
-            }
-        });
-        if (exists === false) {
-            availableYears.push(object.Year);
-        }
+        availableYears.push(yearList[i].Year);
     }
+    // filter out duplicate years
+    availableYears = $.grep(availableYears, function(v,k) {
+        return $.inArray(v, availableYears) == k;
+    });
 
     availableYears.sort(function (a, b) { return b - a; });
 
@@ -416,20 +406,16 @@ function init() {
         }
     }
 
-    //add unique stores to availableStores array and append options to select
+    // add stores to availableStores array
     var availableStores = []; // list of available stores
+
     for (var k = 0; k < items.length; k++) {
-        var object = items[k];
-        var exists = false;
-        jQuery.each(availableStores, function (index, avStore) {
-            if (object.Store == avStore) {
-                exists = true;
-            }
-        });
-        if (exists === false) {
-            availableStores.push(object.Store);
-        }
+        availableStores.push(items[k].Store);
     }
+    // filter out duplicate stores
+    availableStores = $.grep(availableStores, function(v,k) {
+        return $.inArray(v, availableStores) == k;
+    });
 
     $.each(availableStores, function (key, value) {
         $('#selectStore')
