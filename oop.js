@@ -126,10 +126,17 @@ function Barchart(svgnum, store, metric, year) {
 
         svg.append("text")
             .attr("x", (width / 2) - 25)
+            .attr("y", -35)
+            .attr("text-anchor", "middle")
+            .attr("class", "graph-title")
+            .text(year+' '+store);
+
+        svg.append("text")
+            .attr("x", (width / 2) - 25)
             .attr("y", -20)
             .attr("text-anchor", "middle")
             .attr("class", "graph-title")
-            .text(year+' '+store+' '+metric);
+            .text(metric);
 
         svg.append("path")
             .attr("class", "avg")
