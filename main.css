@@ -1,0 +1,209 @@
+/* CSS RESET */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* BEGIN CSS RULES */
+
+body {
+  background: #333; 
+  font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+}
+
+.main-frame {
+    background-color: #FFF;
+    padding: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+.header {
+
+}
+
+.header h1 {
+  text-align: center;
+  font-size: 3.5em; 
+  font-family: 'wfm', 'Delius', cursive;
+  margin: 20px;
+  color:#444;
+}
+
+select[disabled] { background-color:#666; border:none;}
+
+.search-box {
+    line-height: 50px;
+    background-color: #333;
+    color: #FFF;
+    margin-bottom: 20px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    text-align:center;
+}
+.search-box div {display: inline-block;}
+@media (max-width: 630px) {
+  .search-box div {display: block; text-align: center;}
+  .search-box div:first-child {margin-top:10px;}
+  .search-box label {display: block;margin: 0; padding: 0; height: 30px;}
+  .search-box select {width: 90%;}
+}
+.search-box label {
+    font-weight: bold;
+    margin-left: 10px;
+    opacity:0.9;
+}
+
+.results-container {text-align:center;}
+
+svg {
+  display: inline-block;
+  margin:0 5px 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+.lightshadow {
+    webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.75);
+}
+.darkshadow {
+    webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.95);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.95);
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.95);
+}
+.graph-title {
+  font-family:Arial;
+  font-size: 12px;
+  color: #fff;
+  text-decoration: underline;
+}
+.color0 .bar {fill: #8a943e;}
+.color1 .bar {fill: #5379A1;}
+.color2 .bar {fill: #61231F;}
+.color3 .bar {fill: #E05C53;}
+.color4 .bar {fill: #424717;}
+.color5 .bar {fill: #4CA19D;}
+.color6 .bar {fill: #48A179;}
+.color7 .bar {fill: #42A152;}
+.color8 .bar {fill: #E05B8C;}
+.color9 .bar {fill: #AE68E0;}
+.color10 .bar {fill: #6060E0;}
+.color11 .bar {fill: #E0845D;}
+.color12 .bar {fill: #E0C14E;}
+.color13 .bar {fill: #A17E47;}
+.color14 .bar {fill: #A15A49;}
+.color15 .bar {fill: #655FA1;}
+.color16 .bar {fill: #5290A1;}
+
+.bar {
+opacity: .9;
+overflow: hidden;
+cursor:pointer;
+}
+
+.avg {fill:none; stroke:black;}
+
+.opac5 {opacity: .5;}
+.opac3 {opacity: .3;}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.closeme:hover {cursor:pointer;}
+.closeout {fill:rgb(200,200,200);}
+
+select {width:auto;}
+
+#send {margin-left: 10px;-webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; background-color: rgb(255, 255, 255); border:none; padding:5px 8px;}
+
+.d3-tip {
+  line-height: 1;
+  padding: 5px 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border-radius: 4px;
+  font-family: 'Noticia Text', serif;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -3px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+input, button, select, textarea {
+    font-family: Lucida Sans, Arial;
+}
+
+.sort, .sorthigh, .sortlow {
+    font-size:10px;
+    fill:blue;
+    cursor:pointer;
+}

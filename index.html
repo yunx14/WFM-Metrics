@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>metrics</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src='json.js'></script>
+    
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-responsive.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Delius|Noticia+Text' rel='stylesheet' type='text/css'>
+    <link href='main.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div class='container main-frame'>
+
+    <div class='header row-fluid'>
+      <h1>Cultural Wellness Dashboard</h1>
+    </div>
+
+    <div class='search-box row-fluid form-inline'>
+      <div id='form'>
+          <div>
+            <label>Store</label>
+            <select id='selectStore'><option>Select Store</option></select>
+          </div>
+          <div>
+            <label>Metric</label>
+            <select id='selectMetric' disabled ><option class='default'>Select Metric</option><option class='default'>Current Campaign</option></select>
+          </div>
+          <div>
+            <label>Year</label>
+            <select id='selectYear' disabled ><option>Select Year</option></select>
+          </div>
+          <button id='send'>Submit</button>
+      </div>
+    </div>
+
+    <div class='results-container'></div>
+
+  </div>
+
+
+<script src='oop.js'></script>
+</body>
+</html>
