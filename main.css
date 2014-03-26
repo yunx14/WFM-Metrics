@@ -102,9 +102,11 @@ select[disabled] { background-color:#666; border:none;}
 svg {
   display: inline-block;
   margin:0 5px 10px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
+  background-color: #fff;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  border:2px solid #aaa;
 }
 .lightshadow {
     webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.75);

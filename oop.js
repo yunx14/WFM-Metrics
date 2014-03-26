@@ -107,7 +107,7 @@ function Barchart(svgnum, store, metric, year) {
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .attr("id", "svg" + svgnum)
-            .attr("class", 'lightshadow ' + this.getColor(metric))
+            .attr("class", 'ui-state-default ' + this.getColor(metric))
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
