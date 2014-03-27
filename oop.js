@@ -3,7 +3,7 @@ function Barchart(svgnum, store, metric, year) {
     this.store = store;
     this.metric = metric;
     this.year = year;
-    this.data = function () {
+    this.data = function () { //define the data for the graph
 	prepdata = $.grep(items, function(v) {
 			return (v.Store == store && v.Description == metric && v.Year == year);
 		});
@@ -11,7 +11,7 @@ function Barchart(svgnum, store, metric, year) {
 		data = prepdata.sort(function(a,b) {return d3.ascending(a.Year+'-'+a.Quarter, b.Year+'-'+b.Quarter); });
 		return data;
 	};
-	this.regiondata = function() {
+	this.regiondata = function() { //calculate region averages per quarter
 		var q1 = [];
 		var q2 = [];
 		var q3 = [];
@@ -67,8 +67,7 @@ function Barchart(svgnum, store, metric, year) {
 		return regdata;
 	};
 
-	// draw graph baased on data
-	this.drawGraph = function() {
+	this.drawGraph = function() { // draw graph baased on data
 		var margin = { top: 50, right: 20, bottom: 50, left: 60 },
         width = 270,
         height = 180;
@@ -242,25 +241,14 @@ Barchart.prototype = {
 	constructor: Barchart,
 
 	getColor:function(metric) { // set color for graph
-		switch (metric) {
-            case "Whole Planet Foundation Fundraising": return 'color1';
-            case "Holiday Donations": return 'color2';
-            case "Whole Kids Foundation Fundraising": return 'color3';
-            case "Nickels for Non-Profits": return 'color4';
-            case "Community Garden Support": return 'color5';
-            case "Gift Card Sales": return 'color6';
-            case "Whole Trade Sales - Regional Comparison": return 'color7';
-            case "CTC Sales": return 'color8';
-            case "Open POs Past Expected Dates": return 'color9';
-            case "POs Created after Delivery": return 'color10';
-            case "Out of Period": return 'color11';
-            case "Cool Beans": return 'color12';
-            case "Green Trek": return 'color13';
-            case "Biometric Screening Participation": return 'color14';
-            case "Whole Planet Foundation Volunteerism": return 'color15';
-            case "Team Member Survey Participation": return 'color16';
-            default: return 'color0';
+        var definitionsLength = definitions.length;
+        var id;
+        for (var i = 0; i < definitionsLength; i++) {
+            if(definitions[i].Description == metric) {
+                id = definitions[i].ID;
+            }
         }
+        return 'color'+id;
 	},
 
 	openLink:function(d) { // opens data link when clicked on single bar in chart
