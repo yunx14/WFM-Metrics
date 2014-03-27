@@ -402,6 +402,7 @@ function init() {
                 svg.drawGraph();
                 svgnum++;
             }
+            $('#selectStore').focus();
         } else { 
             if (filterStore == 'Select Store') {
                 alert('Please select a Store.');
