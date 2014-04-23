@@ -16,7 +16,10 @@ function Barchart(svgnum, store, metric, year) {
 		var q2 = [];
 		var q3 = [];
 		var q4 = [];
-        var sum = 0, avg;
+        var sum = 0, avg1;
+        var sum2 = 0, avg2;
+        var sum3 = 0, avg3;
+        var sum4 = 0, avg4;
 		var regdata = [];
 		
 		var prepregiondata = $.grep(items, function(v) {
@@ -42,26 +45,26 @@ function Barchart(svgnum, store, metric, year) {
 
         if(q2.length > 0) {
             for (var k = 0; k < q2.length; k++) {
-                sum += q2[k];
+                sum2 += q2[k];
             }
-            avg = Math.round(sum / q2.length);
-            regdata.push({"Quarter": 2, "Value": avg });
+            avg2 = Math.round(sum2 / q2.length);
+            regdata.push({"Quarter": 2, "Value": avg2 });
         }
 
         if(q3.length > 0) {
             for (var l = 0; l < q3.length; l++) {
-                sum += q3[l];
+                sum3 += q3[l];
             }
-            avg = Math.round(sum / q3.length);
-            regdata.push({"Quarter": 3, "Value": avg });
+            avg3 = Math.round(sum3 / q3.length);
+            regdata.push({"Quarter": 3, "Value": avg3 });
         }
 
         if(q4.length > 0) {
             for (var m = 0; m < q4.length; m++) {
-                sum += q4[m];
+                sum4 += q4[m];
             }
-            avg = Math.round(sum / q4.length);
-            regdata.push({"Quarter": 4, "Value": avg });
+            avg4 = Math.round(sum4 / q4.length);
+            regdata.push({"Quarter": 4, "Value": avg4 });
         }
         
 		return regdata;
